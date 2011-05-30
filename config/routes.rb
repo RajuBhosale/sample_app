@@ -1,5 +1,8 @@
 SampleApp::Application.routes.draw do
-  get "users/new"
+# when we add following line URL http://localhost:3000/users/1 gives the result 
+  resources :users  
+  
+#  get "users/new"
 
   match '/signup',  :to => 'users#new'
 
