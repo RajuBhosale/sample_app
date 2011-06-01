@@ -7,7 +7,7 @@ describe User do
     @attr = { 	:name => "Example User",
 		   		:email => "user@example.com",
     			:password => "foobar",
-    			:pasword_conformation => "foobar"				
+    			:pasword_confirmation => "foobar"				
     		 }
   end
 
@@ -16,24 +16,24 @@ describe User do
   end
   
   it "should require a password " do
-  	User.new(@attr.merge(:password => "",:password_conformation => "")).
+  	User.new(@attr.merge(:password => "",:password_confirmation => "")).
   	should_not be_valid
   end
   
   it "should require a matching password conformation " do
-  	User.new(@attr.merge(:password_conformation => "invalid")).
+  	User.new(@attr.merge(:password_confirmation => "invalid")).
   	should_not be_valid
   end
   
   it "should reject short password " do 
   	short ="a"*5
-  	hash =@attr.merge(:password =>short,:password_conformation =>short)
+  	hash =@attr.merge(:password =>short,:password_confirmation =>short)
   	User.new(hash).should_not be_valid
   end
   
   it "should reject long password " do
   	long = "a"*41
-  	hash =@attr.merge(:password => long,:password_conformation =>long)
+  	hash =@attr.merge(:password => long,:password_confirmation =>long)
   	User.new(hash).should_not be_valid 
   end
   
