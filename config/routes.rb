@@ -1,10 +1,11 @@
 SampleApp::Application.routes.draw do
-# when we add following line URL http://localhost:3000/users/1 gives the result 
-  resources :users  
-  
-#  get "users/new"
+  resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
 
   match '/signup',  :to => 'users#new'
+  match '/signin',  :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
+
 
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
